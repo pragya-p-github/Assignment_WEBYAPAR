@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+  }
+  
+  .left-section {
+    background-color: #061f30;
+    width: 60%;
+  }
+  
+  .right-section {
+    width: 40%;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+  

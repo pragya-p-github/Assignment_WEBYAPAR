@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+  }
+  
+  .left-column, .right-column {
+    width: 50%;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 160px;
+  }
+  
+  .left-section, .right-section {
+    background-color: #ffffff;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .left-section input.form-control,
+  .right-section input.form-control {
+    width: calc(100% - 20px); /* Set it to 100% minus padding for better aesthetics */
+    padding: 10px; /* Add padding for better aesthetics */
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+  .user-card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .user-card-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  
+  .user-card-id-container {
+    margin-top: 10px;
+    background-color: #ecf0f1;
+    padding: 10px; /* Padding for the smaller rectangle */
+  }
+  
+  .user-card-id {
+    font-size: 16px;
+  }
