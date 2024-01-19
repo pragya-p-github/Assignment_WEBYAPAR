@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Management</title>
+    <!-- Include CropperJS CSS and JS files -->
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+    <script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>User Profile Management</h1>
+        <form>
+            <div>
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" name="userName" required>
+            </div>
+            <div>
+                <label for="userImage">Profile Picture:</label>
+                <input type="file" id="userImage" name="userImage" accept="image/*" required>
+                <img id="previewImage" src="#" alt="Preview"
+                    style="max-width: 100%; max-height: 80vh; margin-top: 10px;">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let cropper;
+
+            const image = document.getElementById('previewImage');
+            const input = document.getElementById('userImage');
+            const uploadButton = document.getElementById('uploadButton');
+            const userNameInput = document.getElementById('userName');
+
+            input.addEventListener('change', function (e) {
+                const files = e.target.files;
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    image.src = reader.result;
+
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+
+                    cropper = new Cropper(image, {
+                        aspectRatio: 1,
+                        viewMode: 2,
+                    });
+                };
+
+                reader.readAsDataURL(files[0]);
+            });
+
+            uploadButton.addEventListener('click', function () {
+                if (cropper) {
+                    // Get the cropped data as a blob
+                    cropper.getCroppedCanvas().toBlob((blob) => {
+                        // Create a FormData object to send data to the server
+                        const formData = new FormData();
+                        formData.append('userName', userNameInput.value);
+                        formData.append('userImage', blob, 'user_profile.webp');
+
+                        // Perform AJAX request or any other method to send data to the server
+                        // Example using fetch:
+                        fetch('/upload', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(error => console.error('Error:', error));
+                    }, 'image/webp'); // Specify the desired image format (webp in this case)
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

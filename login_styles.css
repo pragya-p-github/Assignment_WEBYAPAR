@@ -11,7 +11,8 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin: 160px;
+    margin-top: 20px;
+    margin-left: 170px;
   }
   
   .left-section, .right-section {
@@ -32,31 +33,59 @@ body {
   }
   
   .btn-primary {
-    width: 100%;
+    width: 95%;
   }
+  
   .user-card {
     margin-bottom: 20px;
+    background: #EAECFF;
     border: 1px solid #ddd;
     padding: 20px;
     position: relative;
+    border-radius: 10px;
   }
   
   .user-card-number {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #3498db;
+    top: 5px;
+    right: 5px;
+    background: #0500FF;
     color: #fff;
-    border-radius: 50%;
-    padding: 5px;
+    border-radius: 48%;
+    height: 20px;
+    text-align: center;
+    padding: 0px 6px;
+  }
+  
+  .user-card-content {
+    margin-top: 10px;
   }
   
   .user-card-id-container {
-    margin-top: 10px;
-    background-color: #ecf0f1;
-    padding: 10px; /* Padding for the smaller rectangle */
+    background-color: #ffffff;
+    padding: 10px;
   }
   
   .user-card-id {
     font-size: 16px;
+    color: black; /* Add this line to set text color to black */
   }
+  
+  .user-card-id-inner {
+    background-color: #ffffff;
+    color: #010101;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  #second {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    width: 40%;
+    margin-left: 220px;
+    float: right;
+  }
+  

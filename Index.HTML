@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
   <link rel="stylesheet" href="sryles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <div class="left-section"></div>
   <div class="right-section">
     <div class="container">
       <h1 class="mt-5">Admin Login</h1>
-      <form action="javascript:void(0);" onsubmit="redirectToLogin()" class="mt-3">
+      <form onsubmit="submitForm(event)" class="mt-3">
         <div class="form-group">
           <input type="text" id="username" name="username" class="form-control" required placeholder="User Id: ">
         </div>
@@ -29,11 +31,24 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script>
-    function redirectToLogin() {
-      window.location.href = "login.html";
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const formData = new FormData(document.querySelector('form'));
+
+      fetch('your_server_endpoint', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Optionally, you can redirect to another page after successful submission
+        window.location.href = "login.html";
+      })
+      .catch(error => console.error('Error:', error));
     }
   </script>
 </body>
+
 </html>
-
-
